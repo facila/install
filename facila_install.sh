@@ -32,10 +32,10 @@ fi
 proc_save_old ()
 {
 OLD=$DIR/install_$APPLI
-[ ! -f $OLD ] && return
+[ -f $OLD ] && mapfile -t LIST < $OLD || LIST=($APPLI)
 
 OK_OLD=0
-for F in $(cat $OLD)
+for F in "${LIST[@]}"
 do if [ -d $F -o -f $F ]
    then OK_OLD=1
         mkdir -p $SAVE/old/$F # création des répertoires contenus dans $F
