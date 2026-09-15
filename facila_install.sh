@@ -99,15 +99,17 @@ FILE=$DIR/$FILE
 [ "$EXT" != "tar.gz" ] && { echo "le fichier $FILE doit être un tar.gz" ; exit ; }
 
 echo "vérification des dépendances"
-. $DIR/install_check.sh
+[ -f $DIR/install_check.sh ] && . $DIR/install_check.sh
 
 echo "verification de facila"
 proc_facila
 cd $FACILA
 
-echo "installation de $FILE"
 proc_save_old
+
+echo "installation de $FILE"
 tar -pxzf $FILE
+
 proc_init_data
 proc_init_lang
 proc_save_new
