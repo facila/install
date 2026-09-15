@@ -1,5 +1,5 @@
 # installation d'une application APPLI de facila
-
+```
 téléchargez les fichiers à partir de github
   - depuis facila/install : facila_install.sh , commande Download
   - depuis facila/APPLI : commandes Code + Download ZIP  
@@ -17,3 +17,4 @@ tapez les commandes suivantes :
 
 si la variable globale $FACILA n'existe pas
 - elle est créée dans ~/.bashrc : "export FACILA=~/facila"
+```
