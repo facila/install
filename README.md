@@ -22,10 +22,9 @@ Opérations réalisées lors de l'installation par le script :
 
   si install_check.sh : vérification des dépendances 
   si la variable globale $FACILA n'existe pas : création dans ~/.bashrc de : "export FACILA=~/facila"
-  si install_$APPLI : l'ancienne version est sauvegardée dans $FACILA/save/old
+  si ancienne version , elle est sauvegardée dans $FACILA/save/old ( avec install_$APPLI si il existe , sinon avec $APPLI )
   si kreo/data_init/$APPLI : initialisation des data de l'appli
-  LG=fr_FR.UTF-8
-  si $APPLI/var/$LG et $LG est différent de $LANG : copie de $LG en $LANG pour traduction 
+  si $APPLI/var/fr_FR.UTF-8 et $LANG est différent de fr_FR.UTF-8 : copie du dossier en $LANG pour traduction 
   sauvegarde de $ZIP dans $FACILA/save/install
   sauvegarde de $TAR dans $FACILA/save/version
 ```
