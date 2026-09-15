@@ -31,7 +31,7 @@ fi
 
 proc_save_old ()
 {
-OLD=$DIR/install_$APPLI
+OLD=$DIR/facila_$APPLI
 [ -f $OLD ] && mapfile -t LIST < $OLD || LIST=($APPLI)
 
 OK_OLD=0
