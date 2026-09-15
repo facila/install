@@ -1,8 +1,8 @@
 # installation d'une application de facila
 ```
 téléchargez les fichiers à partir de github
-  - depuis facila/install : facila_install.sh , commande Download
-  - depuis facila/APPLI   : commandes Code + Download ZIP  
+  depuis facila/install : facila_install.sh , commande Download
+  depuis facila/APPLI   : commandes Code + Download ZIP  
 
 l'installation se fait dans le répertoire de l'utilisateur
 tapez les commandes suivantes :
@@ -17,18 +17,14 @@ tapez les commandes suivantes :
   sh facila_install.sh $TAR
   rm facila_install.sh
 
-si il y a des dépendances dans install_check.sh
-- elles sont installées
+Opérations réalisées lors de l'installation par le script :
 
-si la variable globale $FACILA n'existe pas
-- elle est créée dans ~/.bashrc : "export FACILA=~/facila"
-
-si il y a un fichier de sauvegarde install_$APPLI
-- l'ancienne version est sauvegardée dans $FACILA/save/old
-
-si il y a un fichier kreo/data_init/$APPLI 
-proc_init_data
-proc_init_lang
-proc_save_new
-proc_command
+  si install_check.sh : vérification des dépendances 
+  si la variable globale $FACILA n'existe pas : création dans ~/.bashrc de : "export FACILA=~/facila"
+  si install_$APPLI : l'ancienne version est sauvegardée dans $FACILA/save/old
+  si kreo/data_init/$APPLI : initialisation des data de l'appli
+  LG=fr_FR.UTF-8
+  si $APPLI/var/$LG et $LG est différent de $LANG : copie de $LG en $LANG pour traduction 
+  sauvegarde de $ZIP dans $FACILA/save/install
+  sauvegarde de $TAR dans $FACILA/save/version
 ```
