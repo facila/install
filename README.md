@@ -1,4 +1,4 @@
-# installation d'une application APPLI de facila
+# installation d'une application de facila
 ```
 téléchargez les fichiers à partir de github
   - depuis facila/install : facila_install.sh , commande Download
