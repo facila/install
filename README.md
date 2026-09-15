@@ -26,6 +26,7 @@ si la variable globale $FACILA n'existe pas
 si il y a un fichier de sauvegarde install_$APPLI
 - l'ancienne version est sauvegardée dans $FACILA/save/old
 
+si il y a un fichier kreo/data_init/$APPLI 
 proc_init_data
 proc_init_lang
 proc_save_new
