@@ -15,6 +15,19 @@ tapez les commandes suivantes :
   unzip $MAIN.zip
   sh $MAIN/facila_install.sh $TAR
 
+si dependance
+
 si la variable globale $FACILA n'existe pas
 - elle est créée dans ~/.bashrc : "export FACILA=~/facila"
+
+si old
+
+proc_init_data
+proc_init_lang
+proc_save_new
+proc_command
+
+
+
+
 ```
