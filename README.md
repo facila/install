@@ -9,11 +9,13 @@ tapez les commandes suivantes :
   DIR="nom du répertoire où se trouvent les fichiers téléchargés"
   APPLI="nom de l'application à installer"
   TAR="nom du fichier de l'application $APPLI.vx.xx.tar.gz
-  MAIN=$APPLI-main
+  ZIP=$APPLI-main.zip
   cd
-  mv $DIR/$MAIN.zip .
-  unzip $MAIN.zip
-  sh $MAIN/facila_install.sh $TAR
+  mv $DIR/facila_install.sh .
+  mv $DIR/$ZIP .
+  unzip $ZIP
+  sh facila_install.sh $TAR
+  rm facila_install.sh
 
 si dependance
 
@@ -26,8 +28,4 @@ proc_init_data
 proc_init_lang
 proc_save_new
 proc_command
-
-
-
-
 ```
