@@ -1,11 +1,12 @@
 # installation d'une application de facila
 ```
-téléchargez les fichiers à partir de github
+Téléchargez les fichiers à partir de github
   depuis facila/install : facila_install.sh , commande Download
   depuis facila/APPLI   : commandes Code + Download ZIP  
 
-l'installation se fait dans le répertoire de l'utilisateur
-tapez les commandes suivantes :
+L'installation se fait dans le répertoire de l'utilisateur
+
+Tapez les commandes suivantes :
   TELE="nom du répertoire où se trouvent les fichiers téléchargés"
   APPLI="nom de l'application à installer"
   TAR="nom du fichier de l'application $APPLI.vx.xx.tar.gz
