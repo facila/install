@@ -20,7 +20,7 @@ Tapez les commandes suivantes :
 
 Opérations réalisées lors de l'installation par le script :
 
-  si install_check.sh : vérification des dépendances 
+  si install_check : vérification des dépendances 
   si la variable globale $FACILA n'existe pas : création dans ~/.bashrc de : "export FACILA=~/facila"
   si ancienne version , elle est sauvegardée dans $FACILA/save/old ( avec install_$APPLI si il existe , sinon avec $APPLI )
   si kreo/data_init/$APPLI : initialisation des data de l'appli
