@@ -12,7 +12,7 @@ Tapez les commandes suivantes :
   TAR="nom du fichier de l'application $APPLI.vx.xx.tar.gz
   ZIP=$APPLI-main.zip
   cd
-  mv $TELE/facila_install.sh .
+  mv $TELE/facila_install .
   mv $TELE/$ZIP .
   unzip $ZIP
   bash facila_install $TAR
