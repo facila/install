@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # version 3.00 septembre 2026
-# bash facila_install FICHIER
+# bash facila_install FICHIER_TAR
 
 proc_check ()
 {
@@ -72,7 +72,7 @@ proc_save_new ()
 {
 cd ..
 mv $APPLI-main.zip $SAVE/install
-mv $FILE           $SAVE/version
+mv $TAR            $SAVE/version
 rm -rf $APPLI-main
 }
 
@@ -88,15 +88,15 @@ echo "  commande    : $COM"
 
 #################################################################################
 
- FILE=$1
-APPLI=`echo $FILE | cut -f1 -d.`
-  EXT=`echo $FILE | cut -f4-5 -d.`
+  TAR=$1
+APPLI=`echo $TAR | cut -f1 -d.`
+  EXT=`echo $TAR | cut -f4-5 -d.`
   DIR=$PWD/$APPLI-main  
    LG=fr_FR.UTF-8
 
-FILE=$DIR/$FILE
-[ ! -s "$FILE"       ] && { echo "fichier $FILE absent" ; exit ; }
-[ "$EXT" != "tar.gz" ] && { echo "le fichier $FILE doit être un tar.gz" ; exit ; }
+TAR=$DIR/$TAR
+[ ! -s "$TAR"        ] && { echo "fichier $TAR absent" ; exit ; }
+[ "$EXT" != "tar.gz" ] && { echo "le fichier $TAR doit être un tar.gz" ; exit ; }
 
 echo "vérification des dépendances"
 [ -f $DIR/install_check ] && . $DIR/install_check
@@ -107,8 +107,8 @@ cd $FACILA
 
 proc_save_old
 
-echo "installation de $FILE"
-tar -pxzf $FILE
+echo "installation de $TAR"
+tar -pxzf $TAR
 
 proc_init_data
 proc_init_lang
