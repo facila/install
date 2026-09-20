@@ -46,18 +46,13 @@ done
 [ $OK_OLD = 1 ] && echo "  sauvegarde de l'ancienne version dans $SAVE/old"
 }
 
-proc_init_data ()
+proc_init ()
 {
-INIT=kreo/data_init/$APPLI
-[ ! -d $INIT ] && return
-
-# copie du dossier d'installation data_init dans data pour l'utilisateur
-DATA=$APPLI/data/$USER
-[ ! -d $DATA ] && mkdir $DATA
-cp -r $INIT/* $DATA
+INIT=$FACILA/$APPLI/prg/appli_init.sh
+[ -f $INIT ] && . $INIT
 }
 
-proc_init_lang ()
+proc_lang ()
 {
 [ "$LG" = "$LANG"     ] && return
 [ -d "$APPLI/var/$LG" ] && return
@@ -88,15 +83,15 @@ echo "  commande    : $COM"
 
 #################################################################################
 
-  TAR=$1
-APPLI=`echo $TAR | cut -f1 -d.`
-  EXT=`echo $TAR | cut -f4-5 -d.`
-  DIR=$PWD/$APPLI-main  
    LG=fr_FR.UTF-8
+ FILE=$1
+APPLI=`echo $FILE | cut -f1 -d.`
+  EXT=`echo $FILE| cut -f4-5 -d.`
+  DIR=$PWD/$APPLI-main  
+  TAR=$DIR/$FILE
 
-TAR=$DIR/$TAR
-[ ! -s "$TAR"        ] && { echo "fichier $TAR absent" ; exit ; }
-[ "$EXT" != "tar.gz" ] && { echo "le fichier $TAR doit être un tar.gz" ; exit ; }
+[ ! -s "$TAR"        ] && { echo "fichier $FILE absent" ; exit ; }
+[ "$EXT" != "tar.gz" ] && { echo "le fichier $FILE doit être un tar.gz" ; exit ; }
 
 echo "vérification des dépendances"
 [ -f $DIR/install_check ] && . $DIR/install_check
@@ -107,10 +102,10 @@ cd $FACILA
 
 proc_save_old
 
-echo "installation de $TAR"
+echo "installation de $FILE"
 tar -pxzf $TAR
 
-proc_init_data
-proc_init_lang
+proc_init
+proc_lang
 proc_save_new
 proc_command
