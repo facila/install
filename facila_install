@@ -84,14 +84,13 @@ echo "  commande    : $COM"
 #################################################################################
 
    LG=fr_FR.UTF-8
- FILE=$1
-APPLI=`echo $FILE | cut -f1 -d.`
-  EXT=`echo $FILE| cut -f4-5 -d.`
-  DIR=$PWD/$APPLI-main  
-  TAR=$DIR/$FILE
+  TAR=$1
+APPLI=`echo $TAR | cut -f1 -d.`
+  EXT=`echo $TAR | cut -f4-5 -d.`
+  DIR=$PWD/$APPLI-main
 
-[ ! -s "$TAR"        ] && { echo "fichier $FILE absent" ; exit ; }
-[ "$EXT" != "tar.gz" ] && { echo "le fichier $FILE doit être un tar.gz" ; exit ; }
+[ ! -s "$DIR/$TAR"   ] && { echo "fichier $TAR absent" ; exit ; }
+[ "$EXT" != "tar.gz" ] && { echo "le fichier $TAR doit être un tar.gz" ; exit ; }
 
 echo "vérification des dépendances"
 [ -f $DIR/install_check ] && . $DIR/install_check
@@ -102,8 +101,8 @@ cd $FACILA
 
 proc_save_old
 
-echo "installation de $FILE"
-tar -pxzf $TAR
+echo "installation de $TAR"
+tar -pxzf $DIR/$TAR
 
 proc_init
 proc_lang
