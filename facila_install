@@ -107,9 +107,10 @@ INIT=$FACILA/$APPLI/prg/appli_init.sh
 
 # command
 COM=$FACILA/$APPLI/prg/$APPLI
-[ ! -s "$COM" ] && return
-echo "application : $APPLI"
-echo "commande    : $COM"
-[ $OK_FACILA = 0 ] && echo "fermer et relancer le shell pour exécuter $APPLI"
+if [ ! -s "$COM" ]
+then echo "application : $APPLI"
+     echo "commande    : $COM"
+     [ $OK_FACILA = 0 ] && echo "fermer et relancer le shell pour exécuter $APPLI"
+fi
 
 rm $TELE/facila_install
