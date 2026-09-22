@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# version 3.00 septembre 2026
-# bash facila_install FICHIER_TAR
+# version 1.00 septembre 2026
+# bash "chemin"/facila_install FICHIER_TAR
 
 proc_check ()
 {
@@ -31,9 +31,8 @@ fi
 
 proc_save_old ()
 {
-OLD=$DIR/facila_$APPLI
+OLD=$DIR_ZIP/facila_$APPLI
 [ -f $OLD ] && mapfile -t LIST < $OLD || LIST=($APPLI)
-
 OK_OLD=0
 for F in "${LIST[@]}"
 do if [ -d $F -o -f $F ]
@@ -46,65 +45,71 @@ done
 [ $OK_OLD = 1 ] && echo "  sauvegarde de l'ancienne version dans $SAVE/old"
 }
 
-proc_init ()
-{
-INIT=$FACILA/$APPLI/prg/appli_init.sh
-[ -f $INIT ] && . $INIT
-}
-
 proc_lang ()
 {
 [ "$LG" = "$LANG"     ] && return
 [ -d "$APPLI/var/$LG" ] && return
-
-echo "copie du répertoire d'origine $LG dans la langue de la machine $LANG"
+echo "  copie du répertoire d'origine $LG dans la langue de la machine $LANG"
+echo "    votre langue est $LANG"
+echo "    vous pouvez traduire les fichiers ( menu , aide , ... )"
 cp -R $APPLI/var/$LG $APPLI/var/$LANG
-echo "  votre langue est $LANG"
-echo "  vous pouvez traduire les fichiers ( menu , aide , ... )"
 }
 
 proc_save_new ()
 {
-cd ..
-mv $APPLI-main.zip $SAVE/install
-mv $TAR            $SAVE/version
+echo "  sauvegarde de la nouvelle version dans $SAVE/install et $SAVE/version"
+cd $TELE
+mv $APPLI-main.zip  $SAVE/install
+mv $APPLI-main/$TAR $SAVE/version
 rm -rf $APPLI-main
-}
-
-proc_command ()
-{
-COM=$FACILA/$APPLI/prg/$APPLI
-[ ! -s "$COM" ] && return
-
-echo "  application : $APPLI"
-echo "  commande    : $COM"
-[ $OK_FACILA = 0 ] && echo "  fermer et relancer le shell pour exécuter $APPLI"
 }
 
 #################################################################################
 
-   LG=fr_FR.UTF-8
-  TAR=$1
-APPLI=`echo $TAR | cut -f1 -d.`
-  EXT=`echo $TAR | cut -f4-5 -d.`
-  DIR=$PWD/$APPLI-main
+     LG=fr_FR.UTF-8
+   TELE=$(dirname $(realpath $0))
+    TAR=$1
+  APPLI=`echo $TAR | cut -f1   -d.`
+    EXT=`echo $TAR | cut -f4-5 -d.`
+    ZIP=$APPLI-main.zip
+DIR_ZIP=$TELE/$APPLI-main
 
-[ ! -s "$DIR/$TAR"   ] && { echo "fichier $TAR absent" ; exit ; }
-[ "$EXT" != "tar.gz" ] && { echo "le fichier $TAR doit être un tar.gz" ; exit ; }
+[ ! -s "$TELE/$ZIP"  ] && { echo "le fichier $ZIP n'existe pas" ; exit ; }
+unzip -u $TELE/$ZIP -d $TELE
+echo
 
-echo "vérification des dépendances"
-[ -f $DIR/install_check ] && . $DIR/install_check
+if [ -f $DIR_ZIP/install_check ]
+then echo "vérification des dépendances"
+     . $DIR_ZIP/install_check
+fi
+
+printf "répertoire où est installé $APPLI , Entrée = $HOME : " 
+read DIR_APPLI 
+[ "$DIR_APPLI" = '' ] && cd || cd $DIR_APPLI
+echo
+
+[ ! -s "$DIR_ZIP/$TAR"  ] && { echo "le fichier $TAR n'existe pas"        ; exit ; }
+[ "$EXT" != "tar.gz"    ] && { echo "le fichier $TAR doit être un tar.gz" ; exit ; }
 
 echo "verification de facila"
 proc_facila
 cd $FACILA
 
-proc_save_old
-
 echo "installation de $TAR"
-tar -pxzf $DIR/$TAR
-
-proc_init
+proc_save_old
+tar -pxzf $DIR_ZIP/$TAR
 proc_lang
 proc_save_new
-proc_command
+ 
+# init
+INIT=$FACILA/$APPLI/prg/appli_init.sh
+[ -f $INIT ] && . $INIT
+
+# command
+COM=$FACILA/$APPLI/prg/$APPLI
+[ ! -s "$COM" ] && return
+echo "application : $APPLI"
+echo "commande    : $COM"
+[ $OK_FACILA = 0 ] && echo "fermer et relancer le shell pour exécuter $APPLI"
+
+rm $TELE/facila_install
