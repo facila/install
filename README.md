@@ -1,13 +1,15 @@
 # installation d'une application de facila
 ```
+L'installation se fait par défaut dans le répertoire de l'utilisateur
+
 Téléchargez les fichiers à partir de github
   depuis facila/install : facila_install , commande Download
   depuis facila/APPLI   : commandes Code + Download ZIP  
 
-L'installation se fait par défaut dans le répertoire de l'utilisateur
-
-Tapez les commandes suivantes :
-  bash "chemin"/facila_install FICHIER_TAR
+Tapez la commande suivante :
+  bash "CHEMIN"/facila_install "FICHIER_TAR"
+  CHEMIN = chemin d'accés au fichier facila_install , répertoire de Téléchargement
+  FICHIER_TAR = version à installer , APPLI.vx.xx.tar.gz
 
 Opérations réalisées lors de l'installation par le script :
   si install_check : vérification des dépendances 
