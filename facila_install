@@ -57,10 +57,9 @@ cp -R $APPLI/var/$LG $APPLI/var/$LANG
 
 proc_save_new ()
 {
-echo "  sauvegarde de la nouvelle version dans $SAVE/install et $SAVE/version"
+echo "  sauvegarde de la nouvelle version dans $SAVE/install"
 cd $TELE
-mv $APPLI-main.zip  $SAVE/install
-mv $APPLI-main/$TAR $SAVE/version
+mv $ZIP $SAVE/install/$ZIP.`date +%y%m%d_%H%M` 2> /dev/null
 rm -rf $APPLI-main
 }
 
