@@ -78,9 +78,11 @@ DIR_ZIP=$TELE/$APPLI-main
 unzip -u $TELE/$ZIP -d $TELE
 echo
 
-if [ -f $DIR_ZIP/install_check ]
+# check
+CHECK=$DIR_ZIP/facila_check
+if [ -f $CHECK ]
 then echo "vérification des dépendances"
-     . $DIR_ZIP/install_check
+     . $CHECK
 fi
 
 printf "répertoire où est installé $APPLI , Entrée = $HOME : " 
