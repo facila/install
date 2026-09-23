@@ -79,7 +79,7 @@ unzip -u $TELE/$ZIP -d $TELE
 echo
 
 # check
-CHECK=$DIR_ZIP/facila_check
+CHECK=$DIR_ZIP/facila_install_check
 if [ -f $CHECK ]
 then echo "vérification des dépendances"
      . $CHECK
