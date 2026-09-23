@@ -17,4 +17,5 @@ Opérations réalisées lors de l'installation par le script :
   si ancienne version , elle est sauvegardée dans $FACILA/save/old ( avec facila_$APPLI si il existe , sinon avec $APPLI )
   si $APPLI/var/fr_FR.UTF-8 et $LANG est différent de fr_FR.UTF-8 : copie du dossier en $LANG pour traduction 
   sauvegarde de $ZIP dans $FACILA/save/install
+  sauvegarde de $TAR dans $FACILA/save/version
 ```
