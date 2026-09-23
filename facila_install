@@ -73,6 +73,8 @@ rm -rf $APPLI-main
     ZIP=$APPLI-main.zip
 DIR_ZIP=$TELE/$APPLI-main
 
+umask 0022
+
 [ ! -s "$TELE/$ZIP"  ] && { echo "le fichier $ZIP n'existe pas" ; exit ; }
 unzip -u $TELE/$ZIP -d $TELE
 echo
