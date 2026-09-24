@@ -83,7 +83,8 @@ echo
 # check
 CHECK=$DIR_ZIP/facila_install_check
 if [ -f $CHECK ]
-then echo "vérification des dépendances"
+then echo
+     echo "vérification des dépendances"
      . $CHECK
 fi
 
@@ -99,6 +100,7 @@ echo "verification de facila"
 proc_facila
 cd $FACILA
 
+echo
 echo "installation de $TAR"
 proc_save_old
 tar -pxzf $DIR_ZIP/$TAR
