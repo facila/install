@@ -83,12 +83,11 @@ echo
 # check
 CHECK=$DIR_ZIP/facila_install_check
 if [ -f $CHECK ]
-then echo
-     echo "vérification des dépendances"
+then echo "vérification des dépendances"
      . $CHECK
 fi
 
-printf "répertoire où est installé $APPLI , Entrée = $HOME : " 
+printf "\nrépertoire où est installé $APPLI , Entrée = $HOME : " 
 read DIR_APPLI 
 [ "$DIR_APPLI" = '' ] && cd || cd $DIR_APPLI
 echo
