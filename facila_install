@@ -112,7 +112,8 @@ INIT=$FACILA/$APPLI/prg/appli_init.sh
 # command
 COM=$FACILA/$APPLI/prg/$APPLI
 if [ -s "$COM" ]
-then echo "application : $APPLI"
+then echo
+     echo "application : $APPLI"
      echo "commande    : $COM"
      [ $OK_FACILA = 0 ] && echo "fermer et relancer le shell pour exécuter $APPLI"
 fi
