@@ -59,7 +59,7 @@ proc_save_new ()
 {
 cd $TELE
 echo "  sauvegarde de la nouvelle version dans $SAVE/version"
-mv $TAR $SAVE/version/$TAR
+mv $DIR_ZIP/$TAR $SAVE/version/$TAR
 echo "  sauvegarde du .zip dans $SAVE/install"
 mv $ZIP $SAVE/install/$ZIP.`date +%y%m%d_%H%M`
 
